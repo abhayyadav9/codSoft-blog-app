@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
 
-export const connectToDatabase = async (username, password) => {
-    const URL =`mongodb+srv://${username}:${password}@blog-app.xeitms1.mongodb.net/?retryWrites=true&w=majority&appName=blog-app`;
-    // 
-    
+const Connection = async (username, password) => {
+    const URL =`mongodb+srv://${username}:${password}@app.3vgkmhm.mongodb.net/?retryWrites=true&w=majority&appName=app`;
     try {
-        await mongoose.connect(URL);
-        console.log("MongoDB connected");
-
+        await mongoose.connect(URL, { useNewUrlParser: true })
+        console.log('Database connected successfully');
     } catch (error) {
-        console.error("Error connecting to MongoDB:", error.message);
+        console.log('Error while connecting to the database ', error);
     }
 };
+
+export default Connection;
